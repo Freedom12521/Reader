@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    defaultConfig {
+        applicationId "com.cheng.reader"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+//    sourceSets {
+//        main {
+//            println("---gradleProperties---->" + isModule.toBoolean())
+//            if (isModule.toBoolean()) {
+//                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+//            } else {
+//                manifest.srcFile 'src/main/AndroidManifest.xml'
+//                java {
+//                    //全部Module一起编译的时候剔除debug目录
+//                    exclude '**/debug/**'
+//                }
+//            }
+//
+//        }
+//    }
+
+}
+
+dependencies {
+    if(isModule.toBoolean()){
+        implementation project(":common")
+    }
+
+}

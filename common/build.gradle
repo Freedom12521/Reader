@@ -1,0 +1,65 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+
+
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+
+    api deps.support.annotations
+    api deps.support.app_compat
+    api deps.support.recyclerview
+    api deps.support.cardview
+    api deps.support.design
+    api deps.support.v4
+    //api deps.core_utils
+    api deps.paging
+    api deps.arouter.api
+    api deps.glide.runtime
+    annotationProcessor deps.glide.compiler
+    api deps.constraint_layout
+    api deps.timber
+
+    api deps.lifecycle.runtime
+    api deps.lifecycle.extensions
+    api deps.lifecycle.java8
+    annotationProcessor deps.lifecycle.compiler
+
+
+    //room数据库可以单独拆出来一个module
+    api deps.room.runtime
+    annotationProcessor deps.room.compiler
+    api deps.room.rxjava2
+
+    api project(":http")
+}

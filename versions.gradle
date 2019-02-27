@@ -1,0 +1,221 @@
+import org.omg.CORBA.RepositoryIdHelper
+
+//ext块中定义一个 名字为deps的map集合
+ext.deps = [:]
+//定义一个 （versions） map集合
+def versions = [:]
+
+//versions中添加键值对
+//gradle版本
+versions.android_gradle_plugin = "3.3.1"
+versions.apache_commons = "2.5"
+//liveData测试工具 版本
+versions.arch_core= "2.0.0"
+//测试框架  'androidx.test:runner:1.1.0-alpha4'
+versions.atsl_rules = "1.1.0-alpha4"
+versions.atsl_runner = "1.1.0-alpha4"
+//constraintLayout布局
+versions.constraint_layout = "2.0.0-alpha2"
+//kotlin拓展库
+versions.core_ktx = "1.0.0"
+//dagger2 依赖注入
+versions.dagger = "2.16"
+//用来动态生成DEX字节码的api
+versions.dexmarker = "2.2.0"
+//测试框架
+versions.espresso = "3.1.0-alpha4"
+//图片加载框架
+versions.glide = "4.8.0"
+//单元测试匹配器
+versions.hamcrest = "1.3"
+//单元测试
+versions.junit="4.12"
+//kotlin语言
+versions.kotlin = "1.3.20"
+//生命周期管理
+versions.lifecycle = "2.0.0"
+//mockito测试框架
+versions.mockito = "2.7.19"
+versions.mockito_all = "1.10.19"
+versions.mockito_android ="2.22.0"
+versions.mockwebserver = "3.8.1"
+//navigation 导航框架  管理 fragment 和activity
+versions.navigation = "1.0.0-rc01"
+//okhttp打印log
+versions.okhttp_logging_interceptor = "3.9.0"
+//分页加载框架
+versions.paging = "2.1.0-rc01"
+//网路请求框架
+versions.retrofit = "2.3.0"
+//数据库
+versions.room = "2.1.0-alpha03"
+//rxjava2
+versions.rx_android ="2.0.1"
+versions.rxjava2 = "2.1.3"
+//support v4 v7组合一起
+versions.support = "1.0.0"
+//log库
+versions.timber = "4.5.1"
+//workManager 工作管理，专门为应用执行退出后需要执行的任务，如定时上传数据，定时执行某任务等。不适用应用进程还存活时使用，此时应该使用线程池或者线程执行
+versions.work = "1.0.0-rc02"
+//jsoup android本地爬虫 抓取网站数据
+versions.jsoup = "1.11.3"
+//arouter
+versions.arouter_api = "1.4.1"
+versions.arouter_compiler = "1.2.2"
+
+def deps = [:]
+
+def build_versions =[:]
+build_versions.min_sdk = 19
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.3"
+ext.build_versions = build_versions
+
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+
+def support = [:]
+//注解库
+support.annotations = "androidx.annotation:annotation:$versions.support"
+//v7包
+support.app_compat = "androidx.appcompat:appcompat:$versions.support"
+//列表
+support.recyclerview = "androidx.recyclerview:recyclerview:$versions.support"
+support.cardview = "androidx.cardview:cardview:$versions.support"
+support.design = "com.google.android.material:material:$versions.support"
+//v4包
+support.v4 = "androidx.legacy:legacy-support-v4:$versions.support"
+support.core_utils = "androidx.legacy:legacy-support-core-utils:$versions.support"
+//kotlin拓展库
+support.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
+deps.support = support
+
+deps.paging = "androidx.paging:paging-runtime:$versions.paging"
+deps.paging_ktx = "androidx.paging:paging-runtime-ktx:$versions.paging"
+
+def arouter =[:]
+arouter.api = "com.alibaba:arouter-api:$versions.arouter_api"
+arouter.compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+deps.arouter = arouter
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+
+
+deps.constraint_layout ="androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+deps.timber = "com.jakewharton.timber:timber:$versions.timber"
+
+//rxjava
+deps.rxjava2 ="io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
+
+
+
+
+def room = [:]
+room.runtime = "androidx.room:room-runtime:$versions.room"
+room.compiler = "androidx.room:room-compiler:$versions.room"
+room.rxjava2 = "androidx.room:room-rxjava2:$versions.room"
+room.testing = "androidx.room:room-testing:$versions.room"
+deps.room = room
+
+def lifecycle =[:]
+lifecycle.runtime = "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle"
+lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle"
+lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"
+deps.lifecycle = lifecycle
+
+
+
+//网络请求
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+retrofit.rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+deps.retrofit = retrofit
+//log
+deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_logging_interceptor}"
+
+//依赖注入
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger = dagger
+
+//后台任务
+def work = [:]
+work.runtime = "android.arch.work:work-runtime:$versions.work"
+work.testing = "android.arch.work:work-testing:$versions.work"
+work.firebase = "android.arch.work:work-firebase:$versions.work"
+work.runtime_ktx = "android.arch.work:work-runtime-ktx:$versions.work"
+deps.work = work
+
+//导航管理fragment
+def navigation =[:]
+navigation.runtime = "android.arch.navigation:navigation-runtime:$versions.navigation"
+navigation.runtime_ktx = "android.arch.navigation:navigation-runtime-ktx:$versions.navigation"
+navigation.fragment = "android.arch.navigation:navigation-fragment:$versions.navigation"
+navigation.fragment_ktx = "android.arch.navigation:navigation-fragment-ktx:$versions.navigation"
+navigation.safe_args_plugin="android.arch.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
+deps.navigation = navigation
+
+//爬虫
+def jsoup = [:]
+jsoup.runtime = "org.jsoup:jsoup:$versions.jsoup"
+deps.jsoup = jsoup
+
+
+//测试 框架 单元测试等
+def arch_core = [:]
+arch_core.testing = "androidx.arch.core:core-testing:$versions.arch_core"
+deps.arch_core = arch_core
+
+def espresso = [:]
+espresso.core = "androidx.test.espresso:espresso-core:$versions.espresso"
+espresso.contrib = "androidx.test.espresso:espresso-contrib:$versions.espresso"
+espresso.intents = "androidx.test.espresso:espresso-intents:$versions.espresso"
+deps.espresso = espresso
+
+def atsl  = [:]
+atsl.runner = "androidx.test:runner:$versions.atsl_runner"
+atsl.rules = "androidx.test:rules:$versions.atsl_runner"
+deps.atsl = atsl
+
+def mockito = [:]
+mockito.core = "org.mockito:mockito-core:$versions.mockito"
+mockito.all = "org.mockito:mockito-all:$versions.mockito_all"
+mockito.android = "org.mockito:mockito-android:$versions.mockito_android"
+deps.mockito = mockito
+
+deps.dexmaker = "com.linkedin.dexmaker:dexmaker-mockito:$versions.dexmaker"
+deps.junit = "junit:junit:$versions.junit"
+deps.mock_web_server ="com.squareup.okhttp3:mockwebserver:$versions.mockwebserver"
+deps.hamcrest = "org.hamcrest:hamcrest-all:$versions.hamcrest"
+
+
+//kotlin
+def kotlin =[:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
+
+deps.kotlin = kotlin
+
+
+ext.deps = deps
+
+def addRepos(RepositoryHandler handler){
+    handler.google()
+    handler.jcenter()
+    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots'}
+
+}
+
+ext.addRepos = this.&addRepos
