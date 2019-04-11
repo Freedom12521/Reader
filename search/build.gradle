@@ -1,0 +1,72 @@
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+
+}
+
+android {
+    compileSdkVersion build_versions.target_sdk
+
+
+
+    defaultConfig {
+        if (isModule.toBoolean()) {
+            applicationId "com.cheng.search"
+        }
+
+
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //矢量图标向后兼容（5.0版本以前）
+        vectorDrawables.generatedDensities = ['hdpi', 'xxhdpi']
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            if (isModule.toBoolean()) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    exclude 'debug/**'
+                }
+            }
+        }
+    }
+    //限制xml中的资源名称以main_开头
+    //resourcePrefix "main_"
+
+    dataBinding {
+        enabled true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(":repository")
+    annotationProcessor deps.arouter.compiler
+}

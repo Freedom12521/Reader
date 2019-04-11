@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">common</string>
+    <string name="main_app_name">common</string>
+    <string name="loading">加载中…</string>
+    <string name="load_failed">加载失败. 点击重试!</string>
+    <string name="load_failed_no_network">网络错误! 点击重试</string>
+    <string name="empty">暂无数据!</string>
+    <string name="str_none"/>
 </resources>

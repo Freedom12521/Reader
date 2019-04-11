@@ -7,7 +7,7 @@ def versions = [:]
 
 //versions中添加键值对
 //gradle版本
-versions.android_gradle_plugin = "3.3.1"
+versions.android_gradle_plugin = '3.3.2'
 versions.apache_commons = "2.5"
 //liveData测试工具 版本
 versions.arch_core= "2.0.0"
@@ -52,7 +52,7 @@ versions.room = "2.1.0-alpha03"
 //rxjava2
 versions.rx_android ="2.0.1"
 versions.rxjava2 = "2.1.3"
-//support v4 v7组合一起
+//support
 versions.support = "1.0.0"
 //log库
 versions.timber = "4.5.1"
@@ -63,6 +63,9 @@ versions.jsoup = "1.11.3"
 //arouter
 versions.arouter_api = "1.4.1"
 versions.arouter_compiler = "1.2.2"
+versions.auto_size = "1.1.2"
+versions.leakcanary = "1.6.3"
+versions.RomChecker = "1.0.0"
 
 def deps = [:]
 
@@ -109,8 +112,9 @@ deps.timber = "com.jakewharton.timber:timber:$versions.timber"
 //rxjava
 deps.rxjava2 ="io.reactivex.rxjava2:rxjava:$versions.rxjava2"
 deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
-
-
+//屏幕适配
+deps.auto_size = "me.jessyan:autosize:$versions.auto_size"
+deps.RomChecker = "com.walkud.rom.checker:RomChecker:$versions.RomChecker"
 
 
 def room = [:]
@@ -207,6 +211,14 @@ kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
 
 deps.kotlin = kotlin
+
+def leakcanary =[:]
+leakcanary.android = "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
+leakcanary.android_no_op = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakcanary"
+//如果使用了support包中的fragment
+leakcanary.support_fragment = "com.squareup.leakcanary:leakcanary-support-fragment:$versions.leakcanary"
+deps.leakcanary = leakcanary
+
 
 
 ext.deps = deps

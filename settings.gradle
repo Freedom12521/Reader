@@ -1,1 +1,1 @@
-include ':app', ':parse', ':http', ':common', ':searchbookdemo'
+include ':app', ':parse', ':http', ':common', ':room', ':repository', ':main', ':search', ':book_detail'

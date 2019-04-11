@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:content="http://schemas.android.com/tools"
+    >
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            android:fitsSystemWindows="true"
+            android:background="@null"
+            >
+
+            <FrameLayout
+                android:id="@+id/toolbar_left_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/toolbar_left_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_12"
+                    android:paddingRight="@dimen/dp_12"
+                    android:textSize="@dimen/dp_18"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    content:text="左侧按钮" />
+
+                <ImageView
+                    android:id="@+id/toolbar_left_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_12"
+                    android:paddingRight="@dimen/dp_12"
+                    android:src="@drawable/ic_back"
+                    android:visibility="gone"
+                     />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/title_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="name"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/dp_22"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/toolbar_right_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|end"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/toolbar_right_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp_12"
+                    android:paddingRight="@dimen/dp_12"
+                    android:textSize="@dimen/dp_18"
+                    android:visibility="gone"
+                    content:text="右侧按钮" />
+
+                <ImageView
+                    android:id="@+id/toolbar_right_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp_12"
+                    android:paddingRight="@dimen/dp_12"
+                    android:src="@drawable/ic_back"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

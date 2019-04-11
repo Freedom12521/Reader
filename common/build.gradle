@@ -12,8 +12,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-
+        //矢量图标向后兼容（5.0版本以前）
+        vectorDrawables.generatedDensities = ['hdpi','xxhdpi']
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -32,11 +32,15 @@ android {
         }
     }
 
+    dataBinding{
+        enabled true
+    }
+
 }
 
 dependencies {
 
-    api deps.support.annotations
+
     api deps.support.app_compat
     api deps.support.recyclerview
     api deps.support.cardview
@@ -44,7 +48,10 @@ dependencies {
     api deps.support.v4
     //api deps.core_utils
     api deps.paging
+    //arouter
     api deps.arouter.api
+    annotationProcessor deps.arouter.compiler
+    //glide
     api deps.glide.runtime
     annotationProcessor deps.glide.compiler
     api deps.constraint_layout
@@ -55,11 +62,16 @@ dependencies {
     api deps.lifecycle.java8
     annotationProcessor deps.lifecycle.compiler
 
+    //leakcanary
+    debugImplementation deps.leakcanary.android
+    releaseImplementation deps.leakcanary.android_no_op
+    debugImplementation deps.leakcanary.support_fragment
 
-    //room数据库可以单独拆出来一个module
-    api deps.room.runtime
-    annotationProcessor deps.room.compiler
-    api deps.room.rxjava2
+    //屏幕适配
+    api deps.auto_size
+    //识别手机品牌
+    api deps.RomChecker
 
     api project(":http")
+    api project(":parse")
 }

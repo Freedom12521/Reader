@@ -1,11 +1,15 @@
 package com.cheng.parse.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.cheng.parse.source.SourceID;
 
 import androidx.annotation.Nullable;
 
-public class Book {
+public class Book implements Parcelable {
 
+    public int bookId;
     public String name;
     public String author;
     public String desc;
@@ -20,6 +24,8 @@ public class Book {
 
 
     public String sourceStr;
+
+
 
 
     public Book(@SourceID int sourceId) {
@@ -65,4 +71,50 @@ public class Book {
                 ", sourceStr='" + sourceStr + '\'' +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.bookId);
+        dest.writeString(this.name);
+        dest.writeString(this.author);
+        dest.writeString(this.desc);
+        dest.writeString(this.type);
+        dest.writeString(this.updateTime);
+        dest.writeString(this.newChapter);
+        dest.writeString(this.bookUrl);
+        dest.writeString(this.imgUrl);
+        dest.writeInt(this.sourceId);
+        dest.writeString(this.sourceStr);
+    }
+
+    protected Book(Parcel in) {
+        this.bookId = in.readInt();
+        this.name = in.readString();
+        this.author = in.readString();
+        this.desc = in.readString();
+        this.type = in.readString();
+        this.updateTime = in.readString();
+        this.newChapter = in.readString();
+        this.bookUrl = in.readString();
+        this.imgUrl = in.readString();
+        this.sourceId = in.readInt();
+        this.sourceStr = in.readString();
+    }
+
+    public static final Parcelable.Creator<Book> CREATOR = new Parcelable.Creator<Book>() {
+        @Override
+        public Book createFromParcel(Parcel source) {
+            return new Book(source);
+        }
+
+        @Override
+        public Book[] newArray(int size) {
+            return new Book[size];
+        }
+    };
 }

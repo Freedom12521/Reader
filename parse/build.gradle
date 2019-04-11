@@ -27,11 +27,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    dataBinding{
+        enabled true
+    }
 }
 
 dependencies {
 
     implementation deps.jsoup.runtime
-    implementation project(":common")
+    api deps.support.annotations
 
 }

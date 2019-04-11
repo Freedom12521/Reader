@@ -8,24 +8,24 @@ public class HttpHelper {
 
     private static HttpManager mHttpManager;
 
-    private HttpHelper(){
+    private HttpHelper() {
         mHttpManager = HttpManager
                 .getHttp()
-                .init(BaseApplication.getAppContext())
+                .init(BaseApplication.getInstance().getAppContext())
                 .setBaseUrl(Constants.baseUrl)
                 .settRetrofit();
     }
 
-    private static class SingleHolder{
+    private static class SingleHolder {
         private static final HttpHelper INSTANCE = new HttpHelper();
     }
 
 
-    public static HttpHelper newInstance(){
+    public static HttpHelper newInstance() {
         return SingleHolder.INSTANCE;
     }
 
-    public HttpManager getHttpManager(){
+    public HttpManager getHttpManager() {
         return mHttpManager;
     }
 }

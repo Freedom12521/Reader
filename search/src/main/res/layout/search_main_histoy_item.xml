@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="history"
+            type="com.cheng.room.bean.History" />
+
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <TextView
+        android:id="@+id/history_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClickListener="@{onClickListener}"
+        android:padding="8dp"
+        android:text="@{history.history}"
+        android:textColor="@color/color_000033"
+        android:textSize="20sp"
+        tools:text="修真" />
+
+</layout>

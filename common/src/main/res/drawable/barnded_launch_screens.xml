@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque"
+    ><!-- android:opacity="opaque"防止在启动时出现背景的闪烁-->
+    <!--黑色背景颜色-->
+ <item android:drawable="@color/color_FF6666"/>
+
+    <item>
+        <bitmap android:src="@mipmap/logo" android:gravity="center"/>
+    </item>
+
+</layer-list>

@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_FF6666</item>
+        <!--解决app启动时状态栏颜色不一致-->
+        <item name="colorPrimaryDark">@color/color_FF6666</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:background">@null</item>
+
+    </style>
+
+    <style name="launcherTheme" parent="BaseAppTheme">
+        <item name="android:windowIsTranslucent">false</item>
+        <!--关闭启动窗口-->
+        <!--<item name="android:windowDisablePreview">true</item>-->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/barnded_launch_screens</item>
+
+    </style>
+
+</resources>

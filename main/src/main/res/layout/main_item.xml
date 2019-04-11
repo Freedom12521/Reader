@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="book"
+            type="com.cheng.room.bean.Book" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="longClickListener"
+            type="android.view.View.OnLongClickListener"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="10dp"
+        android:onClick="@{clickListener}"
+        android:onLongClick="@{longClickListener}"
+        >
+
+        <ImageView
+            android:id="@+id/main_item_img"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:src="@mipmap/ic_launcher"
+            android:src="@{book.img}"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/main_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:text="@{book.name}"
+            app:layout_constraintLeft_toRightOf="@id/main_item_img"
+            app:layout_constraintTop_toTopOf="@id/main_item_img"
+            tools:text="神圣收拾收拾" />
+
+        <TextView
+            android:id="@+id/main_item_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:layout_marginLeft="10dp"
+            android:text="@{book.author}"
+            app:layout_constraintLeft_toRightOf="@id/main_item_img"
+            app:layout_constraintTop_toBottomOf="@id/main_item_name"
+            tools:text="那个谁" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:layout_marginLeft="10dp"
+            android:text="@{book.newChapter}"
+            app:layout_constraintBottom_toBottomOf="@id/main_item_img"
+            app:layout_constraintLeft_toRightOf="@id/main_item_img"
+            tools:text="最新章节：" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
